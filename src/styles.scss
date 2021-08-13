@@ -1,0 +1,247 @@
+@import "~@angular/material/theming";
+@import "~@ng-select/ng-select/themes/material.theme.css";
+@include mat-core();
+
+$mat-primary-scheme: (
+  50 : #E3F2FD,
+    100 : #BBDEFB,
+    200 : #90CAF9,
+    300 : #64B5F6,
+    400 : #42A5F5,
+    500 : #2196F3,
+    600 : #1E88E5,
+    700 : #1976D2,
+    800 : #1565C0,
+    900 : #0D47A1,
+    A100 : #82B1FF,
+    A200 : #448AFF,
+    A400 : #2979FF,
+    A700 : #2962FF,
+    contrast: (
+      50 : #000000,
+      100 : #000000,
+      200 : #000000,
+      300 : #000000,
+      400 : #ffffff,
+      500 : #ffffff,
+      600 : #ffffff,
+      700 : #ffffff,
+      800 : #ffffff,
+      900 : #ffffff,
+      A100 : #000000,
+      A200 : #000000,
+      A400 : #ffffff,
+      A700 : #ffffff,
+    )
+);
+$mat-accent-scheme: (
+  50 : #E0F2F1,
+    100 : #B2DFDB,
+    200 : #80CBC4,
+    300 : #4DB6AC,
+    400 : #26A69A,
+    500 : #009688,
+    600 : #00897B,
+    700 : #00796B,
+    800 : #00695C,
+    900 : #004D40,
+    A100 : #A7FFEB,
+    A200 : #64FFDA,
+    A400 : #1DE9B6,
+    A700 : #00BFA5,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #ffffff,
+    500 : #ffffff,
+    600 : #ffffff,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #ffffff,
+    A700 : #ffffff,
+  ),
+);
+$mat-primary-palette: mat-palette($mat-primary-scheme);
+$mat-accent-palette: mat-palette($mat-accent-scheme);
+
+$app-light-theme: mat-light-theme($mat-primary-palette, $mat-accent-palette);
+
+.light-mode {
+  @include angular-material-theme($app-light-theme);
+}
+
+$app-dark-theme: mat-dark-theme($mat-primary-palette, $mat-accent-palette);
+
+.dark-mode {
+  @import "~@angular/material/theming";
+  @include angular-material-theme($app-dark-theme);
+
+  background-color: #333;
+  color: whitesmoke;
+
+  .ng-select .ng-select-container:after {
+    border-bottom-color: rgba(255, 255, 255, 0.7) !important;
+  }
+
+  .ng-select.ng-select-disabled .ng-select-container .ng-value-container {
+    color: rgba(255, 255, 255, 0.7) !important;
+  }
+
+  .ng-option-label,
+  .ng-select  .ng-value {
+    color: whitesmoke !important;
+  }
+
+  .ng-select .ng-select-container {
+    color: rgba(255, 255, 255, 0.7) !important;
+  }
+
+  .ng-select .ng-clear-wrapper,
+  .ng-select .ng-arrow-wrapper .ng-arrow,
+  .ng-select .ng-select-container .ng-placeholder {
+    color: rgba(255, 255, 255, 0.7) !important;
+  }
+
+  .ng-dropdown-panel-items {
+    background-color: #424246 !important;
+  }
+
+  .ng-option.ng-option-disabled {
+    color: lightgray !important;
+  }
+
+  .ico-rojo {
+    color: #7a0000;
+  }
+
+  .ico-verde {
+    color: #287b4c;
+  }
+
+  .ico-azul {
+    color: #2d6184;
+  }
+
+  .ico-naranja {
+    color: #ffc04c;
+  }
+}
+
+.light-mode .mat-toolbar.nav {
+  background-color: #d9d9da !important;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.titulo-header {
+  margin-left: -24px;
+  margin-right: -24px;
+  width: calc(100% + 48px) !important;
+  margin-top: -24px;
+  cursor: move;
+  height: 40px;
+  margin-bottom: 12px;
+  display: flex;
+}
+
+.titulo-header>*:last-child {
+  margin-left: auto;
+}
+
+.pointer {
+  cursor: pointer !important;
+}
+
+.ease-in {
+  animation: fadeInFast ease 400ms;
+  -webkit-animation: fadeInFast ease 400ms;
+  -moz-animation: fadeInFast ease 400ms;
+  -o-animation: fadeInFast ease 400ms;
+  -ms-animation: fadeInFast ease 400ms;
+  }
+  @keyframes fadeInFast {
+  0% {opacity:0;}
+  100% {opacity:1;}
+  }
+
+  @-moz-keyframes fadeInFast {
+  0% {opacity:0;}
+  100% {opacity:1;}
+  }
+
+  @-webkit-keyframes fadeInFast {
+  0% {opacity:0;}
+  100% {opacity:1;}
+  }
+
+  @-o-keyframes fadeInFast {
+  0% {opacity:0;}
+  100% {opacity:1;}
+  }
+
+  @-ms-keyframes fadeInFast {
+  0% {opacity:0;}
+  100% {opacity:1;}
+  }
+
+.acciones {
+  padding: 8px 0;
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 52px;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.p-datatable table {
+  font-size: 12px !important;
+  // font-family: Roboto, 'Helvetica Neue', sans-serif !important;
+}
+
+.titulo-header>h1 {
+  font-size: 18px;
+}
+
+.dialog-s {
+  min-width: 25vw;
+}
+
+.dialog-m {
+  min-width: 50vw;
+}
+
+.dialog-l {
+  min-width: 75vw;
+}
+
+.ng-select {
+  border:0px;
+  min-height: 0px;
+  border-radius: 0;
+}
+.ng-select .ng-select-container  {
+  min-height: 40px;
+  border-radius: 0;
+}
+
+.ico-rojo {
+  color: #CC0000;
+}
+
+.ico-verde {
+  color: #43CD80;
+}
+
+.ico-azul {
+  color: #4CA3DD;
+}
+
+.ico-naranja {
+  color: #ffc04c;
+}

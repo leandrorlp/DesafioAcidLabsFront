@@ -1,0 +1,44 @@
+<div class="background">
+
+</div>
+
+<div class="main-wrapper ease-in" fxLayout="row" fxLayoutAlign="center center">
+
+  <mat-card class="box">
+    <mat-card-header>
+      <mat-card-title style="font-size: 18px;" class="mb-2">Desafio Acid Labs</mat-card-title>
+    </mat-card-header>
+
+    <form class="example-form" [formGroup]="form">
+      <mat-card-content>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Usuario" formControlName="user" cdkFocusInitial autocompleteOff>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Contraseña" formControlName="pass" type="password" autocompleteOff>
+        </mat-form-field>
+      </mat-card-content>
+      <button mat-raised-button class="btn-block" color="primary" (click)="iniciarSesion()" [disabled]="form.invalid">Iniciar sesión</button>
+    </form>
+
+
+  <button mat-icon-button (click)="cambiarTema()" class="oscuro">
+    <mat-icon *ngIf="!oscuro">dark_mode</mat-icon>
+    <mat-icon *ngIf="oscuro">brightness_5</mat-icon>
+  </button>
+  </mat-card>
+
+</div>
+<div class="top">
+</div>
+
+<div class="footer">
+  <a href="https://github.com/leandrorlp/DesafioAcidLabsBack.git">Github - Back</a>
+  <br/>
+  <a href="https://github.com/leandrorlp/DesafioAcidLabsFront.git">Github - Front</a>
+</div>
+
+<div class="img">
+
+</div>

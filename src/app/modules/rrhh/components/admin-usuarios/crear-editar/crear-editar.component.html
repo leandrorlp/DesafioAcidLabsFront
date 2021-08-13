@@ -1,0 +1,37 @@
+<mat-toolbar class="titulo-header" cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle>
+  <h1 mat-dialog-title>Usuarios </h1>
+  <mat-icon mat-dialog-close>close</mat-icon>
+</mat-toolbar>
+
+<div mat-dialog-content class="dialog-m" [formGroup]="form">
+  <div class="row">
+    <div class="col-6">
+      <div class="row">
+        <mat-form-field>
+          <input matInput placeholder="Usuario" formControlName="userName" autocompleteOff tabindex="1">
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field>
+          <input matInput type="password" placeholder="Password" formControlName="password" autocompleteOff tabindex="3">
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="row">
+        <mat-form-field>
+          <input matInput placeholder="Nombre" formControlName="name" autocompleteOff tabindex="2">
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field>
+          <input matInput type="password" placeholder="Confirmar Password"formControlName="passRepeat" autocompleteOff tabindex="4">
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+  <mat-error *ngIf="form.get('passRepetido')?.errors?.confirmPasswordMatches">Las contraseñas no coinciden</mat-error>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-button color="primary" [disabled]="form.invalid || enviando" (click)="guardar()">Guardar</button>
+</div>

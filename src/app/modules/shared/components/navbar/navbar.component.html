@@ -1,0 +1,37 @@
+
+<mat-toolbar class="nav">
+  <button mat-icon-button (click)="abrirMenu()">
+    <mat-icon *ngIf="!verMenu">menu</mat-icon>
+    <mat-icon *ngIf="verMenu">menu_open</mat-icon>
+  </button>
+  <div class="nav-tab">
+    <mat-tab-group animationDuration="0" (selectedTabChange)="seleccionarPestana($event)">
+      <mat-tab *ngFor="let item of pestanas" [label]="item.nombre"></mat-tab>
+    </mat-tab-group>
+  </div>
+  <div class="fin">
+    <button mat-icon-button (click)="cambiarTema()" class="oscuro" align="end">
+      <mat-icon *ngIf="!oscuro">dark_mode</mat-icon>
+      <mat-icon *ngIf="oscuro">brightness_5</mat-icon>
+    </button>
+    <button mat-icon-button (click)="cerrarSesion()" align="end">
+      <mat-icon>logout</mat-icon>
+    </button>
+  </div>
+</mat-toolbar>
+
+<mat-sidenav-container class="menu">
+  <mat-sidenav mode="side" [opened]="verMenu && pestanaSelected != null" class="side">
+    <div class="layout-menu" *ngIf="pestanaSelected">
+      <ng-container *ngFor="let grupo of pestanaSelected.children">
+        <div class="menu-category">{{grupo.nombre}}</div>
+        <div class="menu-items">
+            <a *ngFor="let item of grupo.children" [routerLink]="[item.url]" routerLinkActive="router-link-exact-active">{{item.nombre}}</a>
+        </div>
+      </ng-container>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content class="contenido">
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

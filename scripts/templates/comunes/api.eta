@@ -1,0 +1,68 @@
+<%
+const { utils, route, config, modelTypes } = it;
+const { _, classNameCase, require } = utils;
+const apiClassName = classNameCase(route.moduleName);
+const routes = route.routes;
+const dataContracts = _.map(modelTypes, "name");
+%>
+import { HttpParams } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { EMPTY, Observable } from "rxjs";
+import { RequestsService } from "./requests.service";
+import { ContentType } from "../../../models/content-type.model";
+import { Request } from "../../../models/request.model";
+
+<% if (dataContracts.length) { %>
+import { <%~ dataContracts.join(", ") %> } from "../../../models/comunes.model"
+<% } %>
+
+@Injectable({
+  providedIn: 'root'
+})
+
+export class ApiService{
+	servicio = 5000;
+
+	constructor(private _handler: RequestsService) {
+	}
+
+	private request<T, K>(req: Request): Observable<T> {
+	  if (req.method === 'GET') {
+		let httpParams = new HttpParams();
+
+		if(req.query) {
+		  for (let [key, value] of Object.entries(req.query)) {
+        if (value != null) {
+          httpParams = httpParams.set(key, String(value));
+        }
+		  }
+		}
+		return this._handler.get<T>(this.servicio, req.path, httpParams);
+	  }
+
+	  if (req.method === 'POST') {
+		return this._handler.post<T>(this.servicio, req.path, req.body);
+	  }
+
+	  if (req.method === 'PUT') {
+		return this._handler.put<T>(this.servicio, req.path, req.body);
+	  }
+
+	  if (req.method === 'DELETE') {
+		let httpParams = new HttpParams();
+
+		if(req.query) {
+		  for (let [key, value] of Object.entries(req.query)) {
+			httpParams.set(key, String(value));
+		  }
+		}
+		return this._handler.delete<T>(this.servicio, req.path, httpParams);
+	  }
+
+    return EMPTY;
+	}
+
+    <% routes.forEach((route) => { %>
+        <%~ includeFile('./procedure-call.eta', { route, utils, config }) %>
+    <% }) %>
+}

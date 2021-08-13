@@ -1,0 +1,15 @@
+<mat-toolbar class="titulo-header" cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle>
+  <h1 mat-dialog-title>{{data.titulo}}</h1>
+  <mat-icon mat-dialog-close>close</mat-icon>
+</mat-toolbar>
+
+<div mat-dialog-content class="dialog-s">
+  <div class="row">
+    <div class="col-12">
+      <p>{{data.mensaje}}</p>
+    </div>
+  </div>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-button color="primary" (click)="aceptar()">Aceptar</button>
+</div>
